@@ -1,0 +1,62 @@
+type ClaimSubmit @entity {
+  id: ID!
+  _transactionID: BigInt! # uint256
+  _claimID: BigInt! # uint256
+  _receiver: Bytes! # address
+}
+
+type Dispute @entity {
+  id: ID!
+  _arbitrator: Bytes! # address
+  _disputeID: BigInt! # uint256
+  _metaEvidenceID: BigInt! # uint256
+  _evidenceGroupID: BigInt! # uint256
+}
+
+type Evidence @entity {
+  id: ID!
+  _arbitrator: Bytes! # address
+  _evidenceGroupID: BigInt! # uint256
+  _party: Bytes! # address
+  _evidence: String! # string
+}
+
+type HasToPayFee @entity {
+  id: ID!
+  _transactionID: BigInt! # uint256
+  _party: Int! # uint8
+}
+
+type MetaEvidence @entity {
+  id: ID!
+  _metaEvidenceID: BigInt! # uint256
+  _evidence: String! # string
+}
+
+type MetaTransactionExecuted @entity {
+  id: ID!
+  userAddress: Bytes! # address
+  relayerAddress: Bytes! # address
+  functionSignature: Bytes! # bytes
+}
+
+type Payment @entity {
+  id: ID!
+  _transactionID: BigInt! # uint256
+  _amount: BigInt! # uint256
+  _receiver: Bytes! # address
+}
+
+type Refund @entity {
+  id: ID!
+  _transactionID: BigInt! # uint256
+  _amount: BigInt! # uint256
+  _party: Bytes! # address
+}
+
+type Ruling @entity {
+  id: ID!
+  _arbitrator: Bytes! # address
+  _disputeID: BigInt! # uint256
+  _ruling: BigInt! # uint256
+}
