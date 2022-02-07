@@ -204,7 +204,11 @@ export default function Home({ data }) {
                     </td>
                     <td className="p-2 whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className="flex-1 text-center font-medium text-gray-800">{event._evidence}</div>
+                        <div className="flex-1 text-center font-medium text-gray-800">
+                          <a href={`https://gateway.pinata.cloud/ipfs/${event._evidence.split('/').pop()}`}>
+                            {event._evidence}
+                          </a>
+                        </div>
                       </div>
                     </td>
                   </tr>
@@ -328,7 +332,7 @@ export default function Home({ data }) {
   )
 }
 
-export const getServerSideProps = async context => {
+export const getStaticProps = async context => {
     const { data } = await client.query({
       query: gql(tokensQuery),
       variables: {
